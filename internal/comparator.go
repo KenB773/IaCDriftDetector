@@ -13,12 +13,15 @@ type Drift struct {
 }
 
 // CompareStateWithAWS compares the Terraform state resources with AWS live resources.
-func CompareStateWithAWS(state *TFState, awsResources []FetchedResource) []Drift {
+func CompareStateWithAWS(state *TFState, awsResources []FetchedResource, include []string) []Drift {
 	drift := []Drift{}
 
 	// Build maps for quick lookups
 	tfMap := make(map[string]TFResourceInstance)
 	for _, res := range state.Resources {
+		if len(include) > 0 && !Contains(include, res.Type) {
+			continue
+		}
 		for _, inst := range res.Instances {
 			id, ok := inst.Attributes["id"].(string)
 			if !ok {
@@ -30,6 +33,9 @@ func CompareStateWithAWS(state *TFState, awsResources []FetchedResource) []Drift
 
 	awsMap := make(map[string]FetchedResource)
 	for _, res := range awsResources {
+		if len(include) > 0 && !Contains(include, res.Type) {
+			continue
+		}
 		awsMap[res.Type+":"+res.ID] = res
 	}
 
