@@ -6,6 +6,8 @@ import (
 	"os"
 )
 
+const Version = "v0.1.0"
+
 type Config struct {
 	Region      string   `yaml:"region"`
 	Include     []string `yaml:"include"`
@@ -28,4 +30,25 @@ func LoadConfig(path string) (*Config, error) {
 	}
 
 	return &cfg, nil
+}
+
+func MergeConfigWithFlags(cfg *Config, flags *Config) *Config {
+	if flags.Region != "" {
+		cfg.Region = flags.Region
+	}
+	if len(flags.Include) > 0 {
+		cfg.Include = flags.Include
+	}
+	if flags.Output != "" {
+		cfg.Output = flags.Output
+	}
+	if flags.OutputFile != "" {
+		cfg.OutputFile = flags.OutputFile
+	}
+	if flags.StateFile != "" {
+		cfg.StateFile = flags.StateFile
+	}
+	cfg.DryRun = cfg.DryRun || flags.DryRun
+
+	return cfg
 }
