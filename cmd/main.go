@@ -12,6 +12,13 @@ import (
 )
 
 func main() {
+	// Custom help output
+	flag.Usage = func() {
+		fmt.Println("Usage: drift-detector [OPTIONS]")
+		fmt.Println("\nOptions:")
+		flag.PrintDefaults()
+	}
+
 	// CLI flags
 	configPath := flag.String("config", "", "Path to config.yaml file")
 	region := flag.String("region", "", "AWS region")
@@ -20,7 +27,14 @@ func main() {
 	outputFile := flag.String("output-file", "", "Write output to file")
 	include := flag.String("include", "", "Comma-separated list of resource types to include")
 	dryRun := flag.Bool("dry-run", false, "Run without fetching from AWS")
+	showVersion := flag.Bool("version", false, "Show version information")
 	flag.Parse()
+
+	// Handle --version
+	if *showVersion {
+		fmt.Println("IaC Drift Detector", internal.Version)
+		return
+	}
 
 	// Load config from file if specified
 	var cfg *internal.Config
@@ -68,7 +82,7 @@ func main() {
 	}
 
 	// Compare state and AWS
-	drift := internal.CompareStateWithAWS(state, awsResources)
+	drift := internal.CompareStateWithAWS(state, awsResources, cfg.Include)
 
 	// Output results
 	if len(drift) == 0 {
