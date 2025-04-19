@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/fatih/color"
 	"iac-drift-detector/internal"
 )
 
@@ -73,7 +74,7 @@ func main() {
 
 	var awsResources []internal.FetchedResource
 	if cfg.DryRun {
-		fmt.Println("[DRY RUN] Skipping AWS resource fetch.")
+		color.Yellow("[DRY RUN] Skipping AWS resource fetch.")
 	} else {
 		awsResources, err = internal.FetchAWSResources(cfg.Region)
 		if err != nil {
@@ -86,9 +87,9 @@ func main() {
 
 	// Output results
 	if len(drift) == 0 {
-		fmt.Println("✅ No drift detected.")
+		color.Green("✅ No drift detected.")
 	} else {
-		fmt.Println("⚠️  Drift detected:")
+		color.Red("⚠️  Drift detected:")
 		internal.PrintDriftReport(drift, cfg.Output)
 	}
 
@@ -98,6 +99,6 @@ func main() {
 		if err != nil {
 			log.Fatalf("Failed to write drift report to file: %v", err)
 		}
-		fmt.Printf("📄 Drift report saved to %s\n", cfg.OutputFile)
+		color.Cyan("📄 Drift report saved to %s\n", cfg.OutputFile)
 	}
 }
