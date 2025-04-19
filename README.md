@@ -1,6 +1,6 @@
 # IaC Drift Detector
 
-A lightweight CLI tool that identifies **infrastructure drift** between your live AWS environment and your Terraform state files. Built in Go, this tool helps DevSecOps engineers, SREs, and cloud security professionals detect unmanaged changes, enforce compliance, and improve IaC governance.
+A lightweight CLI tool that identifies **infrastructure drift** between your live AWS environment and your Terraform state files. Built in Go (and therefore my first project using a non-Python language!), this tool helps DevSecOps engineers, SREs, and cloud security professionals detect unmanaged changes, enforce compliance, and improve IaC governance.
 
 ---
 
