@@ -9,7 +9,7 @@ import (
 	"strings"
 
 	"github.com/fatih/color"
-	"iac-drift-detector/internal"
+	"github.com/KenB773/IaCDriftDetector/internal"
 )
 
 func main() {
