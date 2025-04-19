@@ -1,0 +1,9 @@
+{
+  "drift": [
+    {
+      "resource": "aws_instance.example",
+      "change": "tag mismatch",
+      "severity": "warning"
+    }
+  ]
+}
