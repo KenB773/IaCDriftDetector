@@ -1,4 +1,3 @@
-// Main CLI entry
 package main
 
 import (
