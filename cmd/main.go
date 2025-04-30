@@ -5,11 +5,10 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"os"
 	"strings"
 
-	"github.com/fatih/color"
 	"github.com/KenB773/IaCDriftDetector/internal"
+	"github.com/fatih/color"
 )
 
 func main() {
