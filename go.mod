@@ -1,3 +1,3 @@
-module github.com/yourusername/iac-drift-detector
+module github.com/KenB773/IaCDriftDetector
 
 go 1.20
