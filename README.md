@@ -97,7 +97,7 @@ This tool **does not make any changes** to your infrastructure. It only performs
 ## Author
 
 **Ken Brigham**  
-[GitHub](https://github.com/KenB773) | [Portfolio](https://kenb773.github.io)
+[Portfolio](https://kenb773.github.io)
 
 ---
 
