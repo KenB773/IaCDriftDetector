@@ -6,17 +6,17 @@ A lightweight CLI tool that identifies **infrastructure drift** between your liv
 
 ## Features
 
-- ✅ **AWS resource comparison** against `.tfstate`
-- 🔍 Detects:
+- **AWS resource comparison** against `.tfstate`
+- Detects:
   - Missing (deleted) resources
   - Extra (unmanaged) resources
   - Configuration changes
-- 🧪 **Dry-run mode** for testing without live cloud access
-- 🎯 **Filter by resource type** (e.g., only EC2, S3)
-- 📊 **Severity levels** for prioritization (`info`, `warning`, `critical`)
-- 🖨️ Outputs in JSON, Markdown, or CLI table
-- 📁 Export results to file
-- 🧹 Easily extensible for other cloud providers
+- **Dry-run mode** for testing without live cloud access
+- **Filter by resource type** (e.g., only EC2, S3)
+- **Severity levels** for prioritization (`info`, `warning`, `critical`)
+- Outputs in JSON, Markdown, or CLI table
+- Export results to file
+- Easily extensible for other cloud providers
 
 ---
 
@@ -103,4 +103,4 @@ This tool **does not make any changes** to your infrastructure. It only performs
 
 ## License
 
-MIT License — use freely, credit appreciated.
+MIT License. Use freely, credit appreciated.
